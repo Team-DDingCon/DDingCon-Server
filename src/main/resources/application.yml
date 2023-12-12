@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active:
+      - dev
+    include:
+      - secret
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_batch_fetch_size: 1000
+  data:
+    - secret
+
+logging.level:
+  org.hibernate.SQL: debug
