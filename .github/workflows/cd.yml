@@ -3,8 +3,8 @@ name: Deploy
 on:
   workflow_dispatch:
   push:
-  branches:
-    - develop
+    branches:
+      - develop
 
 jobs:
   - name: Checkout repository
