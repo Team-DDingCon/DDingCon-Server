@@ -2,7 +2,7 @@ package com.pocalink.ddingcon.domain.auth.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.pocalink.ddingcon.domain.member.domain.OAuthProvider;
+import com.pocalink.ddingcon.global.security.OAuthProvider;
 import lombok.Getter;
 
 @Getter
@@ -25,7 +25,7 @@ public class KakaoInfoResponse implements OAuthInfoResponse {
     }
 
     @Override
-    public String getNickname() {
+    public String findByNickname() {
         return kakaoAccount.profile.nickname;
     }
 

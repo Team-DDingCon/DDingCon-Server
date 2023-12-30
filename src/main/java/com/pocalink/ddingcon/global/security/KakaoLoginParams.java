@@ -1,5 +1,7 @@
-package com.pocalink.ddingcon.domain.member.domain;
+package com.pocalink.ddingcon.global.security;
 
+import com.pocalink.ddingcon.global.security.OAuthLoginParams;
+import com.pocalink.ddingcon.global.security.OAuthProvider;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;

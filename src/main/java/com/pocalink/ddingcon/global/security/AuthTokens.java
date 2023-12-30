@@ -1,4 +1,4 @@
-package com.pocalink.ddingcon.domain.auth.domain;
+package com.pocalink.ddingcon.global.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

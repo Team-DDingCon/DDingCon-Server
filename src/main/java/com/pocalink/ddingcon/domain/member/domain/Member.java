@@ -1,6 +1,6 @@
-package com.pocalink.ddingcon.domain.member.dto.response;
+package com.pocalink.ddingcon.domain.member.domain;
 
-import com.pocalink.ddingcon.domain.member.domain.OAuthProvider;
+import com.pocalink.ddingcon.global.security.OAuthProvider;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

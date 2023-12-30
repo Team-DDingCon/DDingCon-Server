@@ -1,8 +1,8 @@
 package com.pocalink.ddingcon.domain.auth.service;
 
 import com.pocalink.ddingcon.domain.auth.dto.response.OAuthInfoResponse;
-import com.pocalink.ddingcon.domain.member.domain.OAuthLoginParams;
-import com.pocalink.ddingcon.domain.member.domain.OAuthProvider;
+import com.pocalink.ddingcon.global.security.OAuthLoginParams;
+import com.pocalink.ddingcon.global.security.OAuthProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

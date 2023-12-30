@@ -1,8 +1,9 @@
 package com.pocalink.ddingcon.domain.auth.dto.response;
 
-import com.pocalink.ddingcon.domain.member.domain.OAuthProvider;
+import com.pocalink.ddingcon.global.security.OAuthProvider;
 
 public interface OAuthInfoResponse {
-    String getNickname();
     OAuthProvider getOAuthProvider();
+
+    String findByNickname();
 }

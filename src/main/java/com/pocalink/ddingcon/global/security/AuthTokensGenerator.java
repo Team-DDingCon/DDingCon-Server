@@ -1,5 +1,7 @@
-package com.pocalink.ddingcon.domain.auth.domain;
+package com.pocalink.ddingcon.global.security;
 
+import com.pocalink.ddingcon.global.security.AuthTokens;
+import com.pocalink.ddingcon.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

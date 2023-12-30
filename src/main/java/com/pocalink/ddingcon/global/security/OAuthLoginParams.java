@@ -1,6 +1,5 @@
-package com.pocalink.ddingcon.domain.member.domain;
+package com.pocalink.ddingcon.global.security;
 
-import com.pocalink.ddingcon.domain.member.domain.OAuthProvider;
 import org.springframework.util.MultiValueMap;
 
 public interface OAuthLoginParams {
