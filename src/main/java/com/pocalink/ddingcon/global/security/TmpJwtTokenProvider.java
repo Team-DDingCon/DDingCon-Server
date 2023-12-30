@@ -13,7 +13,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Component
 public class TmpJwtTokenProvider {
 
-    @Value("${jwt.secret}")
+    @Value("${jwt.secret-key}")
     private String secretKey;
     @Value("${jwt.accesstoken-validity-in-seconds}")
     private long accessTokenExpirationTime;
