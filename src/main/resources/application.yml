@@ -15,3 +15,11 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
+
+
+oauth:
+  kakao:
+    client-id: 02a1c330cf4a6a8dd22ec392c40959e7
+    url:
+      auth: https://kauth.kakao.com
+      api: https://kapi.kakao.com
