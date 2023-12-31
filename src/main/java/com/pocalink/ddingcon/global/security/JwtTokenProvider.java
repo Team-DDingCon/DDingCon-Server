@@ -46,4 +46,14 @@ public class JwtTokenProvider {
             return e.getClaims();
         }
     }
+
+    //토큰 유효성을 검사하는 메소드
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

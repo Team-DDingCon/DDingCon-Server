@@ -11,7 +11,8 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class AuthTokensGenerator {
     private static final String BEARER_TYPE = "Bearer";
-    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30;            // 30분
+    //TODO : 토큰 만료 시간 설정(현재 테스트용으로 3분 설정)
+    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 3;
     private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;  // 7일
 
     private final JwtTokenProvider jwtTokenProvider;
