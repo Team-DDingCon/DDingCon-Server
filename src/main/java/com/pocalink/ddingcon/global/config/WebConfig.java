@@ -1,7 +1,7 @@
 package com.pocalink.ddingcon.global.config;
 
 import com.pocalink.ddingcon.global.interceptor.LoginInterceptor;
-import com.pocalink.ddingcon.global.security.TmpJwtTokenProvider;
+import com.pocalink.ddingcon.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
 
-    private final TmpJwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
     private final LoginInterceptor loginInterceptor;
 
     @Override

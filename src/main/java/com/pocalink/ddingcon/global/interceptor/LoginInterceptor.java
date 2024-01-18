@@ -2,7 +2,7 @@ package com.pocalink.ddingcon.global.interceptor;
 
 import com.pocalink.ddingcon.global.error.CustomException;
 import com.pocalink.ddingcon.global.error.ErrorCode;
-import com.pocalink.ddingcon.global.security.TmpJwtTokenProvider;
+import com.pocalink.ddingcon.global.security.JwtTokenProvider;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @RequiredArgsConstructor
 public class LoginInterceptor implements HandlerInterceptor {
 
-    private final TmpJwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
