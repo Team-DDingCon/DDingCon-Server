@@ -66,6 +66,7 @@ public class KakaoApiClient implements OAuthApiClient {
     @Override
     public OAuthInfoResponse requestOauthInfo(String accessToken) {
         String url = apiUrl + "/v2/user/me";
+        OAuthInfoResponse oauthInfoResponse = null;
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -76,6 +77,17 @@ public class KakaoApiClient implements OAuthApiClient {
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
-        return restTemplate.postForObject(url, request, KakaoInfoResponse.class);
+        try {
+            oauthInfoResponse = restTemplate.postForObject(url, request, KakaoInfoResponse.class);
+            assert oauthInfoResponse != null;
+        } catch(RestClientException e) {
+            System.err.println("서버와의 통신 중 문제가 발생했습니다.");
+            e.printStackTrace();
+        } catch(NullPointerException e) {
+            System.err.println("응답이 올바르지 않습니다.");
+            e.printStackTrace();
+        }
+
+        return oauthInfoResponse;
     }
 }
