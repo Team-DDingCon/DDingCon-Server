@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -49,11 +50,17 @@ public class KakaoApiClient implements OAuthApiClient {
         body.add("client_id", clientId);
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
+        try{
+            KakaoTokens response = restTemplate.postForObject(url, request, KakaoTokens.class);
 
-        KakaoTokens response = restTemplate.postForObject(url, request, KakaoTokens.class);
+            assert response != null;
+            return response.getAccessToken();
+        }catch(RestClientException e){
+            throw new RuntimeException("서버와의 통신 중 문제가 발생했습니다.");
+        }catch (NullPointerException e){
+            throw new RuntimeException("응답이 올바르지 않습니다.");
+        }
 
-        assert response != null;
-        return response.getAccessToken();
     }
 
     @Override

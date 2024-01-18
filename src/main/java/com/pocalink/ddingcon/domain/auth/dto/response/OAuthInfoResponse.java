@@ -5,5 +5,5 @@ import com.pocalink.ddingcon.global.security.OAuthProvider;
 public interface OAuthInfoResponse {
     OAuthProvider getOAuthProvider();
 
-    String findByNickname();
+    String getNickname();
 }

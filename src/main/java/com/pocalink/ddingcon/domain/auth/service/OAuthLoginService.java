@@ -23,14 +23,14 @@ public class OAuthLoginService {
     }
 
     private Long findOrCreateMember(OAuthInfoResponse oAuthInfoResponse) {
-        return memberRepository.findByNickname(oAuthInfoResponse.findByNickname())
+        return memberRepository.findByNickname(oAuthInfoResponse.getNickname())
                 .map(Member::getId)
                 .orElseGet(() -> newMember(oAuthInfoResponse));
     }
 
     private Long newMember(OAuthInfoResponse oAuthInfoResponse) {
         Member member = Member.builder()
-                .nickname(oAuthInfoResponse.findByNickname())
+                .nickname(oAuthInfoResponse.getNickname())
                 .oAuthProvider(oAuthInfoResponse.getOAuthProvider())
                 .build();
 

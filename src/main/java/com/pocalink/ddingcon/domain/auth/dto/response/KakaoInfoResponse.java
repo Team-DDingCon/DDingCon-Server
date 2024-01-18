@@ -25,7 +25,7 @@ public class KakaoInfoResponse implements OAuthInfoResponse {
     }
 
     @Override
-    public String findByNickname() {
+    public String getNickname() {
         return kakaoAccount.profile.nickname;
     }
 
