@@ -23,5 +23,17 @@ then
   sudo chmod +x /usr/local/bin/docker-compose
 fi
 
+source .env
+
+echo "pull docker image"
+sudo docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+sudo docker pull ${DOCKER_USERNAME}/${DOCKER_REPOSITORY}:${TAG}
+
+echo "stop docker container"
+sudo docker-compose down
+
 echo "start docker-compose up"
 sudo docker-compose -f /home/ubuntu/srv/ubuntu/docker-compose.yml up --build -d
+
+echo "remove unused resources"
+sudo docker system prune -af
