@@ -8,10 +8,7 @@ import com.pocalink.ddingcon.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,10 +26,14 @@ public class MemberController {
         return ResponseEntity.ok(memberRepository.findAll());
     }
 
-    @GetMapping("/{accessToken}")
-    public ResponseEntity<?> findByAccessToken(@PathVariable String accessToken) {
+    @GetMapping("/me")
+    public ResponseEntity<?> findByAccessToken(@RequestHeader("Authorization") String accessToken){
+        if (accessToken.startsWith("Bearer ")) {
+            accessToken = accessToken.substring(7);
+        }
+
         if(!JwtTokenProvider.validateToken(accessToken)) {
-            return new ResponseEntity<>(ErrorResponse.of(HttpStatus.UNAUTHORIZED.value(), "AccessToken is expired or invalid"), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(ErrorResponse.of(HttpStatus.UNAUTHORIZED.value(), "만료된 토큰입니다."), HttpStatus.UNAUTHORIZED);
         }
 
         Long memberId = authTokensGenerator.extractMemberId(accessToken);
@@ -41,7 +42,8 @@ public class MemberController {
         if(member.isPresent()) {
             return ResponseEntity.ok(member.get());
         } else {
-            return new ResponseEntity<>(ErrorResponse.of(HttpStatus.NOT_FOUND.value(), "Member not found"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ErrorResponse.of(HttpStatus.NOT_FOUND.value(), "조회된 회원이 없습니다."), HttpStatus.NOT_FOUND);
         }
+
     }
 }
